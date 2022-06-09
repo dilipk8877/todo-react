@@ -53,21 +53,37 @@ const Quiz = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0);
     const [showScore,setShowScore] = useState(false)
     const [score,setScore]=useState(0)
+	const [clicked,setClicked] = useState(false)
+
+	// const [cls, setCls] = useState("");
 
     const handleAnswerClick= (isCorrect) =>{
         if(isCorrect === true){
             
             setScore(score+1)
         }
-        const nextQuestion = currentQuestion + 1;
+		setClicked(true)
+        // const nextQuestion = currentQuestion + 1;
+        // if(nextQuestion < questions.length){
+        //     setCurrentQuestion(nextQuestion)
+        // }
+		// else{
+        //     setShowScore(true)
+        // }
+    }
+	const next= () =>{
+		setClicked(false)
+		const nextQuestion = currentQuestion + 1;
         if(nextQuestion < questions.length){
             setCurrentQuestion(nextQuestion)
-        }else{
+        }
+		else{
             setShowScore(true)
         }
-    }
+	}
   return (
     <>
+	
     <div className='main-section'>
         {showScore ? (
             <div className='score-section'>Your scored {score} out of {questions.length}</div>
@@ -81,8 +97,12 @@ const Quiz = () => {
 					
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption)=>(
-                            <button onClick={()=>handleAnswerClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                            <button disabled={clicked} className={`${clicked && answerOption.isCorrect ? "correct" : ""}`} 
+							onClick={()=>handleAnswerClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
                         ))}
+					</div>
+					<div className='next'>
+						<button onClick={next} disabled={!clicked}>next</button>
 					</div>
             </div>
             </>

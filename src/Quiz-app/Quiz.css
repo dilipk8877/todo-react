@@ -95,3 +95,21 @@ body {
   button svg {
     margin-right: 5px;
   }
+
+.next button{
+  background-color: #ff3333;
+  border: none;
+  width: 40px;
+  padding-left: 5px;
+  margin: 10px auto 0px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.correct{
+  background-color: green;
+}
+
+.notCurrect{
+  background-color: red;
+}

@@ -60,7 +60,7 @@ const Todo = () => {
     <>
       <div className="main-div">
         <div className="inner-div">
-          <p>Todo app</p>
+          <p className='para'>Todo app</p>
           <input type="text" placeholder='Add items' value={post} onChange={(e) => setPost(e.target.value)} />
           {
             toggleItem ?  <i className="fa-solid fa-plus" title='Add item' onClick={addItem}></i> :
@@ -72,7 +72,7 @@ const Todo = () => {
             {items.map((current_value) => {
               return (
                 <div key={current_value.id} className="eachitem">
-                  <p>{current_value.name}</p>
+                  <p className='item'>{current_value.name}</p>
                   <div className='todo'>
                     <i className='fa-solid fa-pen-to-square' title='Edit-item' onClick={() => editItem(current_value.id)}></i>
                     <i className='fa-solid fa-trash-alt' title='Delete-item' onClick={() => deleteItem(current_value.id)}></i>
